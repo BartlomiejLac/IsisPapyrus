@@ -1,0 +1,106 @@
+lexer grammar IsisLexer;
+
+ /* Lexer Rules
+ */
+ 
+ LINECOMMENT : '\u{13305}' ~[\r\n]*;
+ CHARCONST : SINGLEQUOTE ANYCHARACTER SINGLEQUOTE;
+ STRINGCONST : DOUBLEQUOTE ANYCHARACTER* DOUBLEQUOTE;
+
+//keywords
+PROGRAMSTART : '\u{13080}';
+PROGRAMEND : '\u{1314A}';
+INSTRUCTIONEND : '\u{132F9}';
+VOID : '\u{1316F}';
+CHAR : '\u{130DC}';
+INT : '\u{130D5}';
+BOOL : '\u{130D2}';
+FRACTIONAL : '\u{130F2}';
+STRING : '\u{130EF}';
+WHILE : '\u{13133}';
+DO : '\u{13136}';
+FOR : '\u{13138}';
+IF : '\u{13038}';
+ELSE : '\u{131A3}';
+BREAK : '\u{130BF}';
+CONTINUE : '\u{13216}';
+RETURN : '\u{130C2}';
+
+//number and text related stuff
+THOUSANDSYMBOL      : [\u{131BC}-\u{131C4}];
+HUNDREDSYMBOL       : [\u{13362}-\u{1336A}];
+TENSYMBOL           : [\u{13386}-\u{1338E}];
+UNITSYMBOL          : [\u{133FA}-\u{13402}];
+ZERO : '\u{13124}' ;
+FRACTIONSYMBOL : '\u{1308B}';
+TENTHOUSANDSYMBOL : '\u{130AD}';
+HUNDREDTHOUSANDSYMBOL : '\u{13190}';
+MILLIONSYMBOL : '\u{13068}';
+
+TRUE : '\u{1303E}';
+FALSE : '\u{1303F}';
+
+LEFTPAREN : '\u{13023}';
+RIGHTPAREN : '\u{13022}';
+LEFTBRACKET : '\u{13024}';
+RIGHTBRACKET : '\u{13025}';
+LEFTBRACE : '\u{13020}';
+RIGHTBRACE : '\u{13021}';
+SINGLEQUOTE : '\u{132FE}';
+DOUBLEQUOTE : '\u{1339B}';
+COMMA : '\u{133F0}';
+
+//various operators
+INCREMENT : PLUS PLUS;
+DECREMENT : MINUS MINUS;
+INCREMENTBY : PLUS ASSIGN;
+DECREMENTBY : MINUS ASSIGN;
+MULTIPLYBY : MULTSYMBOL ASSIGN;
+DIVIDEBY : DIVSYMBOL ASSIGN;
+PLUS : '\u{130BD}';
+MINUS : '\u{130BB}';
+ASSIGN : '\u{1335D}';
+MULTSYMBOL : '\u{13188}';
+DIVSYMBOL : '\u{133F5}';
+MODSYMBOL : '\u{132AD}';
+
+//logical operators
+GREATEREQUAL : GREATER EQUALS;
+LESSEREQUAL : LESSER EQUALS;
+NOTEQUALS : '\u{13399}' | NOT EQUALS;
+EQUALS : '\u{1339A}';
+AND : '\u{13093}';
+OR : '\u{13098}';
+NOT : '\u{1309C}';
+GREATER : '\u{13287}';
+LESSER : '\u{13286}';
+
+fragment NUMBERCHARACTER : ZERO | UNITSYMBOL | TENSYMBOL | HUNDREDSYMBOL | THOUSANDSYMBOL | TENTHOUSANDSYMBOL | HUNDREDTHOUSANDSYMBOL | MILLIONSYMBOL | FRACTIONSYMBOL;
+IDENTIFIER
+    : VALIDLETTER (VALIDLETTER | NUMBERCHARACTER)*
+    ;
+fragment VALIDLETTER
+    : [\u{13000}-\u{13067}]
+    | [\u{13069}-\u{1308A}]
+    | [\u{1308C}-\u{130AC}]
+    | [\u{130AE}-\u{13123}]
+    | [\u{13125}-\u{1318F}]
+    | [\u{13191}-\u{131BB}]
+    | [\u{131C5}-\u{13361}]
+    | [\u{1336C}-\u{13385}]
+    | [\u{13393}-\u{133F9}]
+    | [\u{13404}-\u{1342F}]
+    ;
+WHITESPACE
+    :   [ \t]+
+        -> skip
+    ;
+NEWLINE
+    :   (   '\r' '\n'?
+        |   '\n'
+        )
+        -> skip
+    ;
+
+fragment ANYCHARACTER : . | LETTER;
+fragment LETTER : [\u{13000}-\u{1342F}];
