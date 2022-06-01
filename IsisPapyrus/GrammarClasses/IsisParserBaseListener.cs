@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from C:/Users/bartt/RiderProjects/IsisPapyrus/IsisPapyrus/Grammar\IsisParser.g4 by ANTLR 4.10.1
+// Generated from C:/Users/bartt/source/repos/BartlomiejLac/IsisPapyrus/IsisPapyrus/Grammar\IsisParser.g4 by ANTLR 4.10.1
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -47,6 +47,18 @@ public partial class IsisParserBaseListener : IIsisParserListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitProgram([NotNull] IsisParser.ProgramContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="IsisParser.declarations"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterDeclarations([NotNull] IsisParser.DeclarationsContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="IsisParser.declarations"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitDeclarations([NotNull] IsisParser.DeclarationsContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="IsisParser.mainFunction"/>.
 	/// <para>The default implementation does nothing.</para>
@@ -467,90 +479,6 @@ public partial class IsisParserBaseListener : IIsisParserListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitConstantList([NotNull] IsisParser.ConstantListContext context) { }
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="IsisParser.rawNumber"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterRawNumber([NotNull] IsisParser.RawNumberContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="IsisParser.rawNumber"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitRawNumber([NotNull] IsisParser.RawNumberContext context) { }
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="IsisParser.fraction"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterFraction([NotNull] IsisParser.FractionContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="IsisParser.fraction"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitFraction([NotNull] IsisParser.FractionContext context) { }
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="IsisParser.numberConstant"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterNumberConstant([NotNull] IsisParser.NumberConstantContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="IsisParser.numberConstant"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitNumberConstant([NotNull] IsisParser.NumberConstantContext context) { }
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="IsisParser.fractionList"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterFractionList([NotNull] IsisParser.FractionListContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="IsisParser.fractionList"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitFractionList([NotNull] IsisParser.FractionListContext context) { }
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="IsisParser.charConstant"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterCharConstant([NotNull] IsisParser.CharConstantContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="IsisParser.charConstant"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitCharConstant([NotNull] IsisParser.CharConstantContext context) { }
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="IsisParser.stringConstant"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterStringConstant([NotNull] IsisParser.StringConstantContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="IsisParser.stringConstant"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitStringConstant([NotNull] IsisParser.StringConstantContext context) { }
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="IsisParser.boolConstant"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterBoolConstant([NotNull] IsisParser.BoolConstantContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="IsisParser.boolConstant"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitBoolConstant([NotNull] IsisParser.BoolConstantContext context) { }
 
 	/// <inheritdoc/>
 	/// <remarks>The default implementation does nothing.</remarks>

@@ -4,11 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OsirisInterpreter
+namespace IsisPapyrus
 {
     // Klasa zawierająca metody do translacji liczb na egipski ciąg znaków
     public class EgyptianNumberParser
     {
+        private static List<String> ThousandsCharacters = new List<String> { "𓆼", "𓆽", "𓆾", "𓆿", "𓇀", "𓇁", "𓇂", "𓇃", "𓇄" };
+        private static List<String> HundredsCharacters = new List<String> { "𓍢", "𓍣", "𓍤", "𓍥", "𓍦", "𓍧", "𓍨", "𓍩", "𓍪" };
+        private static List<String> TensCharacters = new List<String> { "𓎆", "𓎇", "𓎈", "𓎉", "𓎊", "𓎋", "𓎌", "𓎍", "𓎎" };
+        private static List<String> SinglesCharacters = new List<String> { "𓏺", "𓏻", "𓏼", "𓏽", "𓏾", "𓏿", "𓐀", "𓐁", "𓐂" };
         public static String ConvertToEgyptian(Number n)
         {
             // Jeżeli liczba to zero (bez ułamka) to wypisz symbol dla 0
@@ -69,7 +73,7 @@ namespace OsirisInterpreter
                 // wykonujemy dzielenie całkowite przez 1000 (dowiadujemy się ile wynosi cyfra tysięcy)
                 int idx = a / 1000;
                 // odczytujemy odpowiedni z symboli z tablicy symboli liny
-                sb.Append(Program.ThousandsCharacters[idx - 1]);
+                sb.Append(ThousandsCharacters[idx - 1]);
                 a -= idx * 1000;
             }
             // dodajemy symbol setek (symbol lilii wodnej)
@@ -78,7 +82,7 @@ namespace OsirisInterpreter
                 // wykonujemy dzielenie całkowite przez 100 (dowiadujemy się ile wynosi cyfra setek)
                 int idx = a / 100;
                 // odczytujemy symbol z tablicy lilii wodnych
-                sb.Append(Program.HundredsCharacters[idx - 1]);
+                sb.Append(HundredsCharacters[idx - 1]);
                 a -= idx * 100;
             }
             // dodajemy symbol dziesiątek, symbol takiego czegoś do wiązania krów podobno, nie znam się xD
@@ -86,14 +90,14 @@ namespace OsirisInterpreter
             {
                 // wykonujemy dzielenie całkowite przez 10 (dowiadujemy się ile wynosi cyfra dziesiątek)
                 int idx = a / 10;
-                sb.Append(Program.TensCharacters[idx - 1]);
+                sb.Append(TensCharacters[idx - 1]);
                 a -= idx * 10;
             }
             // dodajemy symbol jedności, kreski
             if (a > 0)
             {
                 // wartość 'a' która nam pozostała posłuży nam za indeks do tablicy
-                sb.Append(Program.SinglesCharacters[a - 1]);
+                sb.Append(SinglesCharacters[a - 1]);
             }
             return sb.ToString();
         }

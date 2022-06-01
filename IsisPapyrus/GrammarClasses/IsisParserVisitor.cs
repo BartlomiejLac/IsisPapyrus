@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from C:/Users/bartt/RiderProjects/IsisPapyrus/IsisPapyrus/Grammar\IsisParser.g4 by ANTLR 4.10.1
+// Generated from C:/Users/bartt/source/repos/BartlomiejLac/IsisPapyrus/IsisPapyrus/Grammar\IsisParser.g4 by ANTLR 4.10.1
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -37,6 +37,12 @@ public interface IIsisParserVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitProgram([NotNull] IsisParser.ProgramContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="IsisParser.declarations"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitDeclarations([NotNull] IsisParser.DeclarationsContext context);
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="IsisParser.mainFunction"/>.
 	/// </summary>
@@ -247,46 +253,4 @@ public interface IIsisParserVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitConstantList([NotNull] IsisParser.ConstantListContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="IsisParser.rawNumber"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitRawNumber([NotNull] IsisParser.RawNumberContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="IsisParser.fraction"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitFraction([NotNull] IsisParser.FractionContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="IsisParser.numberConstant"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitNumberConstant([NotNull] IsisParser.NumberConstantContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="IsisParser.fractionList"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitFractionList([NotNull] IsisParser.FractionListContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="IsisParser.charConstant"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitCharConstant([NotNull] IsisParser.CharConstantContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="IsisParser.stringConstant"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitStringConstant([NotNull] IsisParser.StringConstantContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="IsisParser.boolConstant"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitBoolConstant([NotNull] IsisParser.BoolConstantContext context);
 }

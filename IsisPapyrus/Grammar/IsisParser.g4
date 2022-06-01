@@ -5,7 +5,8 @@ parser grammar IsisParser;
 
 options { tokenVocab = IsisLexer; }
 
-program : declarationList mainFunction | mainFunction;
+program : declarations mainFunction EOF | declarations EOF;
+declarations : declarationList | /*eps*/;
 mainFunction : PROGRAMSTART instructions PROGRAMEND;
 declarationList : declarationList declaration | declaration;
 declaration : declarationVariable INSTRUCTIONEND | declarationFunc;
@@ -45,7 +46,7 @@ expression : variable ASSIGN expression | variable INCREMENTBY expression | vari
 boolExpression : boolExpression OR andExpression | andExpression;
 andExpression : andExpression AND notExpression | notExpression;
 notExpression : NOT notExpression | compareExpression;
-compareExpression : sumExpression compareOperator sumExpression;
+compareExpression : sumExpression compareOperator sumExpression | BOOLCONST;
 compareOperator : EQUALS | NOTEQUALS | GREATER | GREATEREQUAL | LESSER | LESSEREQUAL;
 sumExpression : sumExpression sumOperator multExpression | multExpression;
 sumOperator : PLUS | MINUS;
@@ -54,23 +55,7 @@ multOperator : MULTSYMBOL | DIVSYMBOL | MODSYMBOL;
 unaryExpression : unaryOperator unaryExpression | factor;
 unaryOperator : PLUS | MINUS;
 factor : variable | constant;
-variable : IDENTIFIER | IDENTIFIER LEFTBRACKET numberConstant RIGHTBRACKET;
-constant : stringConstant | charConstant | numberConstant | boolConstant | LEFTBRACKET constants RIGHTBRACKET;
+variable : IDENTIFIER | IDENTIFIER LEFTBRACKET NUMBERCONST RIGHTBRACKET;
+constant : CHARCONST | STRINGCONST | BOOLCONST | NUMBERCONST | LEFTBRACKET constants RIGHTBRACKET;
 constants : constantList | /* eps */;
 constantList : constantList COMMA constant | constant;
-
-///////////////////////
-
-rawNumber : MILLIONSYMBOL+ HUNDREDTHOUSANDSYMBOL* TENTHOUSANDSYMBOL* THOUSANDSYMBOL? HUNDREDSYMBOL? TENSYMBOL? UNITSYMBOL? 
-          | HUNDREDTHOUSANDSYMBOL+ TENTHOUSANDSYMBOL* THOUSANDSYMBOL? HUNDREDSYMBOL? TENSYMBOL? UNITSYMBOL? 
-          | TENTHOUSANDSYMBOL+ THOUSANDSYMBOL? HUNDREDSYMBOL? TENSYMBOL? UNITSYMBOL? 
-          | THOUSANDSYMBOL HUNDREDSYMBOL? TENSYMBOL? UNITSYMBOL? 
-          | HUNDREDSYMBOL TENSYMBOL? UNITSYMBOL? 
-          | TENSYMBOL UNITSYMBOL? 
-          | UNITSYMBOL;
-fraction : FRACTIONSYMBOL rawNumber;
-numberConstant : ZERO | rawNumber | rawNumber fractionList;
-fractionList : fractionList fraction | fraction;
-charConstant : CHARCONST;
-stringConstant : STRINGCONST;
-boolConstant : TRUE | FALSE;

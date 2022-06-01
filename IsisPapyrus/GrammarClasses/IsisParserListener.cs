@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from C:/Users/bartt/RiderProjects/IsisPapyrus/IsisPapyrus/Grammar\IsisParser.g4 by ANTLR 4.10.1
+// Generated from C:/Users/bartt/source/repos/BartlomiejLac/IsisPapyrus/IsisPapyrus/Grammar\IsisParser.g4 by ANTLR 4.10.1
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -40,6 +40,16 @@ public interface IIsisParserListener : IParseTreeListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	void ExitProgram([NotNull] IsisParser.ProgramContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="IsisParser.declarations"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterDeclarations([NotNull] IsisParser.DeclarationsContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="IsisParser.declarations"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitDeclarations([NotNull] IsisParser.DeclarationsContext context);
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="IsisParser.mainFunction"/>.
 	/// </summary>
@@ -390,74 +400,4 @@ public interface IIsisParserListener : IParseTreeListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	void ExitConstantList([NotNull] IsisParser.ConstantListContext context);
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="IsisParser.rawNumber"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterRawNumber([NotNull] IsisParser.RawNumberContext context);
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="IsisParser.rawNumber"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitRawNumber([NotNull] IsisParser.RawNumberContext context);
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="IsisParser.fraction"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterFraction([NotNull] IsisParser.FractionContext context);
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="IsisParser.fraction"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitFraction([NotNull] IsisParser.FractionContext context);
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="IsisParser.numberConstant"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterNumberConstant([NotNull] IsisParser.NumberConstantContext context);
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="IsisParser.numberConstant"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitNumberConstant([NotNull] IsisParser.NumberConstantContext context);
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="IsisParser.fractionList"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterFractionList([NotNull] IsisParser.FractionListContext context);
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="IsisParser.fractionList"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitFractionList([NotNull] IsisParser.FractionListContext context);
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="IsisParser.charConstant"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterCharConstant([NotNull] IsisParser.CharConstantContext context);
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="IsisParser.charConstant"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitCharConstant([NotNull] IsisParser.CharConstantContext context);
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="IsisParser.stringConstant"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterStringConstant([NotNull] IsisParser.StringConstantContext context);
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="IsisParser.stringConstant"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitStringConstant([NotNull] IsisParser.StringConstantContext context);
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="IsisParser.boolConstant"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterBoolConstant([NotNull] IsisParser.BoolConstantContext context);
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="IsisParser.boolConstant"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitBoolConstant([NotNull] IsisParser.BoolConstantContext context);
 }
