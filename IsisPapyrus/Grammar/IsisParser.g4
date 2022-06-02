@@ -29,14 +29,15 @@ argument : type variableName;
 
 instructions : instructionsList | /*eps*/;
 instructionsList : instructionsList instruction | instruction;
-instruction : expression INSTRUCTIONEND | instructionIf | instructionLoop | instructionReturn | instructionBreak;
+instruction : expression INSTRUCTIONEND | instructionIf | instructionLoop | instructionReturn | instructionBreak | instructionPrint;
 instructionIf : IF LEFTPAREN boolExpression RIGHTPAREN LEFTBRACE instructions RIGHTBRACE
               | IF LEFTPAREN boolExpression RIGHTPAREN LEFTBRACE instructions RIGHTBRACE ELSE LEFTBRACE instructions RIGHTBRACE;
 instructionLoop : FOR LEFTPAREN expression INSTRUCTIONEND boolExpression INSTRUCTIONEND expression RIGHTPAREN LEFTBRACE instructions RIGHTBRACE
                 | WHILE LEFTPAREN boolExpression RIGHTPAREN LEFTBRACE instructions RIGHTBRACE
                 | DO LEFTBRACE instructions RIGHTBRACE WHILE LEFTPAREN boolExpression RIGHTPAREN;
 instructionReturn : RETURN INSTRUCTIONEND | RETURN expression INSTRUCTIONEND;
-instructionBreak : BREAK INSTRUCTIONEND;
+instructionBreak : BREAK INSTRUCTIONEND | CONTINUE INSTRUCTIONEND;
+instructionPrint : PRINT LEFTPAREN sumExpression RIGHTPAREN INSTRUCTIONEND;
 
 ///////////////////////
 

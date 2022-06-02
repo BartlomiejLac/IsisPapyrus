@@ -101,5 +101,85 @@ namespace IsisPapyrus
             }
             return sb.ToString();
         }
+
+        public static Number fromEgyptian(string s)
+        {
+            var result = rawNumberFromEgyptian(s, 0);
+            int whole = result.Item1;
+            List<int> fractions = new List<int>();
+            while (result.Item2 != -1)
+            {
+                result = rawNumberFromEgyptian(s, result.Item2);
+                fractions.Add(result.Item1);
+            }
+            return new Number(whole, fractions);
+        }
+
+        private static Tuple<int, int> rawNumberFromEgyptian(string s, int startIndex)
+        {
+            int val = 0;
+            char[] characters = s.ToCharArray();
+            for (int i = startIndex; i < characters.Length; i++)
+            {
+                string currentChar;
+                char c = characters[i];
+                if (Char.IsWhiteSpace(c)) continue;
+                if (Char.IsLowSurrogate(c)) throw new ArgumentException("Low surrogate without preceding high surrogate.");
+                if (Char.IsHighSurrogate(c))
+                {
+                    i++;
+                    char nextc = characters[i];
+                    if (!Char.IsLowSurrogate(nextc)) throw new ArgumentException("High surrogate without following low surrogate.");
+                    currentChar = new string(new char[] { c, nextc });
+                }
+                else
+                {
+                    currentChar = c.ToString();
+                }
+                if (currentChar.Equals("𓂋"))
+                {
+                    return new Tuple<int, int>(val, i + 1);
+                }
+                {
+
+                }
+                if (currentChar.Equals("𓁨"))
+                {
+                    val += 1000000;
+                    continue;
+                }
+                if (currentChar.Equals("𓆐"))
+                {
+                    val += 100000;
+                    continue;
+                }
+                if (currentChar.Equals("𓂭"))
+                {
+                    val += 10000;
+                    continue;
+                }
+                if (ThousandsCharacters.Contains(currentChar))
+                {
+                    val += 1000 * (ThousandsCharacters.IndexOf(currentChar) + 1);
+                    continue;
+                }
+                if (HundredsCharacters.Contains(currentChar))
+                {
+                    val += 100 * (HundredsCharacters.IndexOf(currentChar) + 1);
+                    continue;
+                }
+                if (TensCharacters.Contains(currentChar))
+                {
+                    val += 10 * (TensCharacters.IndexOf(currentChar) + 1);
+                    continue;
+                }
+                if (SinglesCharacters.Contains(currentChar))
+                {
+                    val += SinglesCharacters.IndexOf(currentChar) + 1;
+                    continue;
+                }
+            }
+            return new Tuple<int, int>(val, -1);
+        }
     }
 }

@@ -12,9 +12,10 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
-    <LangVersion>7.3</LangVersion>
+    <LangVersion>8</LangVersion>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -63,6 +64,7 @@
     <Compile Include="GrammarClasses\IsisParserBaseVisitor.cs" />
     <Compile Include="GrammarClasses\IsisParserListener.cs" />
     <Compile Include="GrammarClasses\IsisParserVisitor.cs" />
+    <Compile Include="VisitorClasses\IsisVisitor.cs" />
     <Compile Include="NumberClasses\EgyptianNumberParser.cs" />
     <Compile Include="NumberClasses\Fraction.cs" />
     <Compile Include="NumberClasses\Number.cs" />
@@ -77,6 +79,7 @@
     <Compile Include="SyntaxRichTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="VisitorClasses\VariableStorage.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

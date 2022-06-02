@@ -152,6 +152,12 @@ public interface IIsisParserVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitInstructionBreak([NotNull] IsisParser.InstructionBreakContext context);
 	/// <summary>
+	/// Visit a parse tree produced by <see cref="IsisParser.instructionPrint"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitInstructionPrint([NotNull] IsisParser.InstructionPrintContext context);
+	/// <summary>
 	/// Visit a parse tree produced by <see cref="IsisParser.expression"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>

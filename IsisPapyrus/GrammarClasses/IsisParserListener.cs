@@ -231,6 +231,16 @@ public interface IIsisParserListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitInstructionBreak([NotNull] IsisParser.InstructionBreakContext context);
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="IsisParser.instructionPrint"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterInstructionPrint([NotNull] IsisParser.InstructionPrintContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="IsisParser.instructionPrint"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitInstructionPrint([NotNull] IsisParser.InstructionPrintContext context);
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="IsisParser.expression"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>

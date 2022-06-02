@@ -51,6 +51,24 @@ namespace IsisPapyrus
             EgyptianRepresentation = EgyptianNumberParser.ConvertToEgyptian(this);
         }
 
+        public Number(int _w, List<int> _d)
+        {
+            WholeNumber = _w;
+            if (_w < 0)
+            {
+                WholeNumber *= -1;
+                IsNegative = !IsNegative;
+            }
+            FractionDecomposition = _d;
+            Fraction current = new Fraction(0, 1);
+            foreach(int _i in _d)
+            {
+                current = current + new Fraction(1, _i);
+            }
+            ProperFraction = current;
+            EgyptianRepresentation = EgyptianNumberParser.ConvertToEgyptian(this);
+        }
+
         //zachłanny algorytm fibbonacciego do rozkładu na ułamki jednostkowe https://en.wikipedia.org/wiki/Egyptian_fraction#Later_usage tu o tym dużo jest
         public List<int> DecomposeFraction(Fraction f)
         {

@@ -276,6 +276,18 @@ public partial class IsisParserBaseListener : IIsisParserListener {
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitInstructionBreak([NotNull] IsisParser.InstructionBreakContext context) { }
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="IsisParser.instructionPrint"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterInstructionPrint([NotNull] IsisParser.InstructionPrintContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="IsisParser.instructionPrint"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitInstructionPrint([NotNull] IsisParser.InstructionPrintContext context) { }
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="IsisParser.expression"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
