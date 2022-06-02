@@ -29,6 +29,7 @@ namespace IsisPapyrus
                 && this.openFileDialog1.FileName.Length > 0)
             {
                 var input = CharStreams.fromPath(this.openFileDialog1.FileName);
+                this.syntaxRichTextBox1.Text = input.ToString();
                 IsisLexer lex = new IsisLexer(input);
                 CommonTokenStream tokens = new CommonTokenStream(lex);
                 IsisParser parser = new IsisParser(tokens);

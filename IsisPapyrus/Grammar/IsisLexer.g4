@@ -3,7 +3,9 @@ lexer grammar IsisLexer;
  /* Lexer Rules
  */
  
- LINECOMMENT : '\u{13305}' ~[\r\n]* -> skip;
+ channels {COMMENTS}
+ 
+ LINECOMMENT : '\u{13305}' ~[\r\n]* -> channel(COMMENTS);
  CHARCONST : SINGLEQUOTE ANYCHARACTER SINGLEQUOTE;
  STRINGCONST : DOUBLEQUOTE ANYCHARACTER* DOUBLEQUOTE;
 
@@ -114,3 +116,5 @@ NEWLINE
 
 fragment ANYCHARACTER : . | LETTER;
 fragment LETTER : [\u{13000}-\u{1342F}];
+
+UNRECOGNIZED : .+?;
