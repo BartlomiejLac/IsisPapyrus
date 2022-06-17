@@ -65,5 +65,37 @@ namespace IsisPapyrus
             }
             return new Fraction(a.Numerator * b.Denominator, a.Denominator * b.Numerator);
         }
+
+        public static bool operator <(Fraction a, Fraction b)
+        {
+            if (a.Denominator == b.Denominator) return a.Numerator < b.Numerator;
+            return a.Numerator * b.Denominator < b.Numerator * a.Denominator;
+        }
+
+        public static bool operator >(Fraction a, Fraction b)
+        {
+            if (a.Denominator == b.Denominator) return a.Numerator > b.Numerator;
+            return a.Numerator * b.Denominator > b.Numerator * a.Denominator;
+        }
+
+        public static bool operator ==(Fraction a, Fraction b)
+        {
+            return (a.Numerator == b.Numerator && a.Denominator == b.Denominator); 
+        }
+
+        public static bool operator !=(Fraction a, Fraction b)
+        {
+            return !(a == b);
+        }
+
+        public static bool operator <=(Fraction a, Fraction b)
+        {
+            return !(a > b);
+        }
+
+        public static bool operator >=(Fraction a, Fraction b)
+        {
+            return !(a < b);
+        }
     }
 }

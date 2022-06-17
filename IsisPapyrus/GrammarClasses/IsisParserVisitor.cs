@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from C:/Users/bartt/source/repos/BartlomiejLac/IsisPapyrus/IsisPapyrus/Grammar\IsisParser.g4 by ANTLR 4.10.1
+// Generated from C:/Users/bartt/RiderProjects/IsisPapyrus/IsisPapyrus/Grammar\IsisParser.g4 by ANTLR 4.10.1
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -134,11 +134,23 @@ public interface IIsisParserVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitInstructionIf([NotNull] IsisParser.InstructionIfContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="IsisParser.instructionLoop"/>.
+	/// Visit a parse tree produced by <see cref="IsisParser.instructionFor"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitInstructionLoop([NotNull] IsisParser.InstructionLoopContext context);
+	Result VisitInstructionFor([NotNull] IsisParser.InstructionForContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="IsisParser.instructionWhile"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitInstructionWhile([NotNull] IsisParser.InstructionWhileContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="IsisParser.instructionDo"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitInstructionDo([NotNull] IsisParser.InstructionDoContext context);
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="IsisParser.instructionReturn"/>.
 	/// </summary>
@@ -151,6 +163,12 @@ public interface IIsisParserVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitInstructionBreak([NotNull] IsisParser.InstructionBreakContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="IsisParser.instructionContinue"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitInstructionContinue([NotNull] IsisParser.InstructionContinueContext context);
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="IsisParser.instructionPrint"/>.
 	/// </summary>
@@ -236,6 +254,24 @@ public interface IIsisParserVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitFactor([NotNull] IsisParser.FactorContext context);
 	/// <summary>
+	/// Visit a parse tree produced by <see cref="IsisParser.functionCall"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitFunctionCall([NotNull] IsisParser.FunctionCallContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="IsisParser.sumExpressions"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitSumExpressions([NotNull] IsisParser.SumExpressionsContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="IsisParser.sumExpressionsList"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitSumExpressionsList([NotNull] IsisParser.SumExpressionsListContext context);
+	/// <summary>
 	/// Visit a parse tree produced by <see cref="IsisParser.variable"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
@@ -247,16 +283,4 @@ public interface IIsisParserVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitConstant([NotNull] IsisParser.ConstantContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="IsisParser.constants"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitConstants([NotNull] IsisParser.ConstantsContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="IsisParser.constantList"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitConstantList([NotNull] IsisParser.ConstantListContext context);
 }

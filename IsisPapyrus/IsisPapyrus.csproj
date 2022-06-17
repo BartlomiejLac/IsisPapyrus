@@ -58,12 +58,39 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ColorMap.cs" />
+    <Compile Include="Exceptions\FunctionReturnException.cs" />
+    <Compile Include="Exceptions\LoopBreakException.cs" />
+    <Compile Include="Exceptions\LoopContinueException.cs" />
     <Compile Include="GrammarClasses\IsisLexer.cs" />
     <Compile Include="GrammarClasses\IsisParser.cs" />
     <Compile Include="GrammarClasses\IsisParserBaseListener.cs" />
     <Compile Include="GrammarClasses\IsisParserBaseVisitor.cs" />
     <Compile Include="GrammarClasses\IsisParserListener.cs" />
     <Compile Include="GrammarClasses\IsisParserVisitor.cs" />
+    <Compile Include="InterpreterRuntime\IsisModifyVariableExpression.cs" />
+    <Compile Include="InterpreterRuntime\BoolExpressions\IsisAndExpression.cs" />
+    <Compile Include="InterpreterRuntime\BoolExpressions\IsisBoolExpression.cs" />
+    <Compile Include="InterpreterRuntime\Instructions\IsisInstructionBreak.cs" />
+    <Compile Include="InterpreterRuntime\Instructions\IsisInstructionContinue.cs" />
+    <Compile Include="InterpreterRuntime\IsisExpression.cs" />
+    <Compile Include="InterpreterRuntime\IsisVariableDeclaration.cs" />
+    <Compile Include="InterpreterRuntime\MathExpressions\IsisFactor.cs" />
+    <Compile Include="InterpreterRuntime\IsisFunction.cs" />
+    <Compile Include="InterpreterRuntime\IsisInstruction.cs" />
+    <Compile Include="InterpreterRuntime\Instructions\IsisInstructionDo.cs" />
+    <Compile Include="InterpreterRuntime\Instructions\IsisInstructionFor.cs" />
+    <Compile Include="InterpreterRuntime\Instructions\IsisInstructionIf.cs" />
+    <Compile Include="InterpreterRuntime\Instructions\IsisInstructionPrint.cs" />
+    <Compile Include="InterpreterRuntime\Instructions\IsisInstructionReturn.cs" />
+    <Compile Include="InterpreterRuntime\Instructions\IsisInstructionWhile.cs" />
+    <Compile Include="InterpreterRuntime\BoolExpressions\IsisCompareExpression.cs" />
+    <Compile Include="InterpreterRuntime\MathExpressions\IsisMultExpression.cs" />
+    <Compile Include="InterpreterRuntime\IsisProgram.cs" />
+    <Compile Include="InterpreterRuntime\MathExpressions\IsisSumExpression.cs" />
+    <Compile Include="InterpreterRuntime\IsisVariable.cs" />
+    <Compile Include="InterpreterRuntime\varType.cs" />
+    <Compile Include="VisitorClasses\ExpressionCreator.cs" />
+    <Compile Include="VisitorClasses\InstructionCreator.cs" />
     <Compile Include="VisitorClasses\IsisVisitor.cs" />
     <Compile Include="NumberClasses\EgyptianNumberParser.cs" />
     <Compile Include="NumberClasses\Fraction.cs" />
@@ -79,7 +106,6 @@
     <Compile Include="SyntaxRichTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="VisitorClasses\VariableStorage.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

@@ -6,7 +6,7 @@
         <PerGrammarGenerationSettings>
           <option name="fileName" value="$PROJECT_DIR$/IsisPapyrus/Grammar/IsisParser.g4" />
           <option name="autoGen" value="true" />
-          <option name="outputDir" value="C:\Users\bartt\source\repos\BartlomiejLac\IsisPapyrus\IsisPapyrus\GrammarClasses" />
+          <option name="outputDir" value="C:\Users\bartt\RiderProjects\IsisPapyrus\IsisPapyrus\GrammarClasses" />
           <option name="libDir" value="" />
           <option name="encoding" value="" />
           <option name="pkg" value="" />

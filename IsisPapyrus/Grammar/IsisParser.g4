@@ -14,12 +14,12 @@ declaration : declarationVariable INSTRUCTIONEND | declarationFunc;
 ////////////////////////
 
 declarationVariable : type variableName;
-variableName : IDENTIFIER | IDENTIFIER LEFTBRACKET RIGHTBRACKET;
-type : INT | FRACTIONAL | CHAR | STRING;
+variableName : IDENTIFIER;
+type : NUMERIC | STRING;
 
 ////////////////////////
 
-declarationFunc : functionType IDENTIFIER LEFTPAREN arguments RIGHTPAREN LEFTBRACE instructionsList RIGHTBRACE;
+declarationFunc : functionType IDENTIFIER LEFTPAREN arguments RIGHTPAREN LEFTBRACE instructions RIGHTBRACE;
 functionType : type | VOID;
 arguments : argumentsList | /*eps*/;
 argumentsList : argumentsList COMMA argument | argument;
@@ -29,21 +29,22 @@ argument : type variableName;
 
 instructions : instructionsList | /*eps*/;
 instructionsList : instructionsList instruction | instruction;
-instruction : expression INSTRUCTIONEND | instructionIf | instructionLoop | instructionReturn | instructionBreak | instructionPrint;
+instruction : expression INSTRUCTIONEND | instructionIf | instructionFor | instructionWhile | instructionDo | instructionReturn | instructionBreak | instructionContinue | instructionPrint;
 instructionIf : IF LEFTPAREN boolExpression RIGHTPAREN LEFTBRACE instructions RIGHTBRACE
               | IF LEFTPAREN boolExpression RIGHTPAREN LEFTBRACE instructions RIGHTBRACE ELSE LEFTBRACE instructions RIGHTBRACE;
-instructionLoop : FOR LEFTPAREN expression INSTRUCTIONEND boolExpression INSTRUCTIONEND expression RIGHTPAREN LEFTBRACE instructions RIGHTBRACE
-                | WHILE LEFTPAREN boolExpression RIGHTPAREN LEFTBRACE instructions RIGHTBRACE
-                | DO LEFTBRACE instructions RIGHTBRACE WHILE LEFTPAREN boolExpression RIGHTPAREN;
-instructionReturn : RETURN INSTRUCTIONEND | RETURN expression INSTRUCTIONEND;
-instructionBreak : BREAK INSTRUCTIONEND | CONTINUE INSTRUCTIONEND;
+instructionFor : FOR LEFTPAREN expression INSTRUCTIONEND boolExpression INSTRUCTIONEND expression RIGHTPAREN LEFTBRACE instructions RIGHTBRACE;
+instructionWhile : WHILE LEFTPAREN boolExpression RIGHTPAREN LEFTBRACE instructions RIGHTBRACE;
+instructionDo : DO LEFTBRACE instructions RIGHTBRACE WHILE LEFTPAREN boolExpression RIGHTPAREN;
+instructionReturn : RETURN INSTRUCTIONEND | RETURN sumExpression INSTRUCTIONEND;
+instructionBreak : BREAK INSTRUCTIONEND;
+instructionContinue : CONTINUE INSTRUCTIONEND;
 instructionPrint : PRINT LEFTPAREN sumExpression RIGHTPAREN INSTRUCTIONEND;
 
 ///////////////////////
 
-expression : variable ASSIGN expression | variable INCREMENTBY expression | variable DECREMENTBY expression
-           | variable MULTIPLYBY expression | variable DIVIDEBY expression | variable INCREMENT | variable DECREMENT
-           | boolExpression | sumExpression | declarationVariable | declarationVariable ASSIGN expression;
+expression : variable ASSIGN sumExpression | variable INCREMENTBY sumExpression | variable DECREMENTBY sumExpression
+           | variable MULTIPLYBY sumExpression | variable DIVIDEBY sumExpression | variable INCREMENT | variable DECREMENT
+           | boolExpression | sumExpression | declarationVariable | declarationVariable ASSIGN sumExpression;
 boolExpression : boolExpression OR andExpression | andExpression;
 andExpression : andExpression AND notExpression | notExpression;
 notExpression : NOT notExpression | compareExpression;
@@ -55,8 +56,9 @@ multExpression : multExpression multOperator unaryExpression | unaryExpression;
 multOperator : MULTSYMBOL | DIVSYMBOL | MODSYMBOL;
 unaryExpression : unaryOperator unaryExpression | factor;
 unaryOperator : PLUS | MINUS;
-factor : variable | constant;
-variable : IDENTIFIER | IDENTIFIER LEFTBRACKET NUMBERCONST RIGHTBRACKET;
-constant : CHARCONST | STRINGCONST | BOOLCONST | NUMBERCONST | LEFTBRACKET constants RIGHTBRACKET;
-constants : constantList | /* eps */;
-constantList : constantList COMMA constant | constant;
+factor : variable | constant | functionCall | LEFTPAREN sumExpression RIGHTPAREN;
+functionCall : IDENTIFIER LEFTPAREN sumExpressions RIGHTPAREN;
+sumExpressions : sumExpressionsList | /* eps */;
+sumExpressionsList : sumExpressionsList sumExpression | sumExpression;
+variable : IDENTIFIER;
+constant : STRINGCONST | NUMBERCONST;

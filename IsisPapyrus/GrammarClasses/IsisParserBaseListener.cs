@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from C:/Users/bartt/source/repos/BartlomiejLac/IsisPapyrus/IsisPapyrus/Grammar\IsisParser.g4 by ANTLR 4.10.1
+// Generated from C:/Users/bartt/RiderProjects/IsisPapyrus/IsisPapyrus/Grammar\IsisParser.g4 by ANTLR 4.10.1
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -240,17 +240,41 @@ public partial class IsisParserBaseListener : IIsisParserListener {
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitInstructionIf([NotNull] IsisParser.InstructionIfContext context) { }
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="IsisParser.instructionLoop"/>.
+	/// Enter a parse tree produced by <see cref="IsisParser.instructionFor"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void EnterInstructionLoop([NotNull] IsisParser.InstructionLoopContext context) { }
+	public virtual void EnterInstructionFor([NotNull] IsisParser.InstructionForContext context) { }
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="IsisParser.instructionLoop"/>.
+	/// Exit a parse tree produced by <see cref="IsisParser.instructionFor"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void ExitInstructionLoop([NotNull] IsisParser.InstructionLoopContext context) { }
+	public virtual void ExitInstructionFor([NotNull] IsisParser.InstructionForContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="IsisParser.instructionWhile"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterInstructionWhile([NotNull] IsisParser.InstructionWhileContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="IsisParser.instructionWhile"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitInstructionWhile([NotNull] IsisParser.InstructionWhileContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="IsisParser.instructionDo"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterInstructionDo([NotNull] IsisParser.InstructionDoContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="IsisParser.instructionDo"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitInstructionDo([NotNull] IsisParser.InstructionDoContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="IsisParser.instructionReturn"/>.
 	/// <para>The default implementation does nothing.</para>
@@ -275,6 +299,18 @@ public partial class IsisParserBaseListener : IIsisParserListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitInstructionBreak([NotNull] IsisParser.InstructionBreakContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="IsisParser.instructionContinue"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterInstructionContinue([NotNull] IsisParser.InstructionContinueContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="IsisParser.instructionContinue"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitInstructionContinue([NotNull] IsisParser.InstructionContinueContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="IsisParser.instructionPrint"/>.
 	/// <para>The default implementation does nothing.</para>
@@ -444,6 +480,42 @@ public partial class IsisParserBaseListener : IIsisParserListener {
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitFactor([NotNull] IsisParser.FactorContext context) { }
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="IsisParser.functionCall"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterFunctionCall([NotNull] IsisParser.FunctionCallContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="IsisParser.functionCall"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitFunctionCall([NotNull] IsisParser.FunctionCallContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="IsisParser.sumExpressions"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterSumExpressions([NotNull] IsisParser.SumExpressionsContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="IsisParser.sumExpressions"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitSumExpressions([NotNull] IsisParser.SumExpressionsContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="IsisParser.sumExpressionsList"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterSumExpressionsList([NotNull] IsisParser.SumExpressionsListContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="IsisParser.sumExpressionsList"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitSumExpressionsList([NotNull] IsisParser.SumExpressionsListContext context) { }
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="IsisParser.variable"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
@@ -467,30 +539,6 @@ public partial class IsisParserBaseListener : IIsisParserListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitConstant([NotNull] IsisParser.ConstantContext context) { }
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="IsisParser.constants"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterConstants([NotNull] IsisParser.ConstantsContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="IsisParser.constants"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitConstants([NotNull] IsisParser.ConstantsContext context) { }
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="IsisParser.constantList"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterConstantList([NotNull] IsisParser.ConstantListContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="IsisParser.constantList"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitConstantList([NotNull] IsisParser.ConstantListContext context) { }
 
 	/// <inheritdoc/>
 	/// <remarks>The default implementation does nothing.</remarks>

@@ -11,7 +11,7 @@ namespace IsisPapyrus
         // część całkowita
         public int WholeNumber;
         // tutaj zaznaczam czy liczba jest ujemna
-        public Boolean IsNegative = false;
+        public bool IsNegative = false;
         // tutaj jest ułamek właściwy, który stanowi część ułamkową liczby
         public Fraction ProperFraction;
         // lista mianowników ułamków jednostkowych (o liczniku 1) stanowiąca rozkład powyższego ułamka
@@ -122,7 +122,7 @@ namespace IsisPapyrus
         // zapis 25 (2/3) 1/2 1/6 oznacza liczbę 25 i dwie trzecie, następnie podany jest rozkład części ułamkowej na jednostkowe
         public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
+            /*StringBuilder sb = new StringBuilder();
             if (IsNegative) sb.Append('-');
             sb.Append(WholeNumber.ToString());
             sb.Append(" (" + ProperFraction.Numerator.ToString() + "/" + ProperFraction.Denominator.ToString() + ")");
@@ -131,7 +131,8 @@ namespace IsisPapyrus
                 sb.Append(" 1/");
                 sb.Append(i.ToString());
             }
-            return sb.ToString();
+            return sb.ToString();*/
+            return EgyptianRepresentation;
         }
 
         // tutaj jest zamiana liczby na ułamek (niewłaściwy), np. 2 i 2/3 na 8/3
@@ -167,6 +168,36 @@ namespace IsisPapyrus
         {
             var resultFraction = a.ToFraction() / b.ToFraction();
             return new Number(0, resultFraction.Numerator, resultFraction.Denominator);
+        }
+
+        public static bool operator <(Number a, Number b)
+        {
+            return a.ToFraction() < b.ToFraction();
+        }
+
+        public static bool operator >(Number a, Number b)
+        {
+            return a.ToFraction() > b.ToFraction();
+        }
+
+        public static bool operator ==(Number a, Number b)
+        {
+            return a.ToFraction() == b.ToFraction();
+        }
+
+        public static bool operator !=(Number a, Number b)
+        {
+            return !(a == b);
+        }
+
+        public static bool operator <=(Number a, Number b)
+        {
+            return !(a > b);
+        }
+
+        public static bool operator >=(Number a, Number b)
+        {
+            return !(a < b);
         }
     }
 }
