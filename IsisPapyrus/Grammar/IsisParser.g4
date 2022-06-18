@@ -8,7 +8,7 @@ options { tokenVocab = IsisLexer; }
 program : declarations mainFunction EOF | declarations EOF;
 declarations : declarationList | /*eps*/;
 mainFunction : PROGRAMSTART instructions PROGRAMEND;
-declarationList : declarationList declaration | declaration;
+declarationList : declaration declarationList | declaration;
 declaration : declarationVariable INSTRUCTIONEND | declarationFunc;
 
 ////////////////////////
@@ -22,17 +22,17 @@ type : NUMERIC | STRING;
 declarationFunc : functionType IDENTIFIER LEFTPAREN arguments RIGHTPAREN LEFTBRACE instructions RIGHTBRACE;
 functionType : type | VOID;
 arguments : argumentsList | /*eps*/;
-argumentsList : argumentsList COMMA argument | argument;
+argumentsList : argument COMMA argumentsList | argument;
 argument : type variableName;
 
 ////////////////////////
 
 instructions : instructionsList | /*eps*/;
-instructionsList : instructionsList instruction | instruction;
+instructionsList : instruction instructionsList | instruction;
 instruction : expression INSTRUCTIONEND | instructionIf | instructionFor | instructionWhile | instructionDo | instructionReturn | instructionBreak | instructionContinue | instructionPrint;
 instructionIf : IF LEFTPAREN boolExpression RIGHTPAREN LEFTBRACE instructions RIGHTBRACE
               | IF LEFTPAREN boolExpression RIGHTPAREN LEFTBRACE instructions RIGHTBRACE ELSE LEFTBRACE instructions RIGHTBRACE;
-instructionFor : FOR LEFTPAREN expression INSTRUCTIONEND boolExpression INSTRUCTIONEND expression RIGHTPAREN LEFTBRACE instructions RIGHTBRACE;
+instructionFor : FOR LEFTPAREN expression INSTRUCTIONEND boolExpression INSTRUCTIONEND expression INSTRUCTIONEND RIGHTPAREN LEFTBRACE instructions RIGHTBRACE;
 instructionWhile : WHILE LEFTPAREN boolExpression RIGHTPAREN LEFTBRACE instructions RIGHTBRACE;
 instructionDo : DO LEFTBRACE instructions RIGHTBRACE WHILE LEFTPAREN boolExpression RIGHTPAREN;
 instructionReturn : RETURN INSTRUCTIONEND | RETURN sumExpression INSTRUCTIONEND;
@@ -59,6 +59,6 @@ unaryOperator : PLUS | MINUS;
 factor : variable | constant | functionCall | LEFTPAREN sumExpression RIGHTPAREN;
 functionCall : IDENTIFIER LEFTPAREN sumExpressions RIGHTPAREN;
 sumExpressions : sumExpressionsList | /* eps */;
-sumExpressionsList : sumExpressionsList sumExpression | sumExpression;
+sumExpressionsList : sumExpression sumExpressionsList | sumExpression;
 variable : IDENTIFIER;
 constant : STRINGCONST | NUMBERCONST;

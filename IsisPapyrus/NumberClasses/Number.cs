@@ -185,6 +185,18 @@ namespace IsisPapyrus
             return a.ToFraction() == b.ToFraction();
         }
 
+        public override bool Equals(object obj)
+        {
+            if (!(obj is Number)) return false;
+            Number o = obj as Number;
+            return this == o;
+        }
+
+        public override int GetHashCode()
+        {
+            return WholeNumber;
+        }
+
         public static bool operator !=(Number a, Number b)
         {
             return !(a == b);

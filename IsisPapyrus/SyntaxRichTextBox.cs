@@ -53,7 +53,6 @@ namespace OsirisInterpreter
         {
             var input = CharStreams.fromString(this.Text);
             IsisLexer lexer = new IsisLexer(input);
-            CommonTokenStream cts = new CommonTokenStream(lexer);
             while (true)
             {
                 var token = lexer.NextToken();

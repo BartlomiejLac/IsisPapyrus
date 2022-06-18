@@ -83,6 +83,18 @@ namespace IsisPapyrus
             return (a.Numerator == b.Numerator && a.Denominator == b.Denominator); 
         }
 
+        public override bool Equals(object obj)
+        {
+            if (!(obj is Fraction)) return false;
+            Fraction o = obj as Fraction;
+            return this == o;
+        }
+
+        public override int GetHashCode()
+        {
+            return Denominator;
+        }
+
         public static bool operator !=(Fraction a, Fraction b)
         {
             return !(a == b);

@@ -16,14 +16,14 @@ namespace IsisPapyrus.InterpreterRuntime
             if (type == varType.IsisNumber && value is Number ||
                 type == varType.IsisString && value is string ||
                 value == null) this.value = value;
-            throw new Exception();
+            else throw new Exception();
         }
 
         public void setValue(object val)
         {
             if (type == varType.IsisNumber && val is Number ||
                 type == varType.IsisString && val is string) this.value = val;
-            throw new Exception();
+            else throw new Exception();
         }
     }
 

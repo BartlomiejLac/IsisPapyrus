@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Antlr4.Runtime;
+using IsisPapyrus.InterpreterRuntime;
+using IsisPapyrus.VisitorClasses;
 using static IsisParser;
 
 namespace IsisPapyrus
@@ -53,6 +55,33 @@ namespace IsisPapyrus
                 && this.saveFileDialog1.FileName.Length > 0)
             {
                 System.IO.File.WriteAllText(this.saveFileDialog1.FileName, this.syntaxRichTextBox1.Text);
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.textBox1.Clear();
+            IsisProgram prog = new IsisProgram(ref this.textBox1);
+            IsisVisitor vis = new IsisVisitor(prog);
+
+            var input = CharStreams.fromString(this.syntaxRichTextBox1.Text);
+            IsisLexer lex = new IsisLexer(input);
+            CommonTokenStream tokens = new CommonTokenStream(lex);
+            IsisParser parser = new IsisParser(tokens);
+            ProgramContext start = parser.program();
+            vis.Visit(start);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            this.textBox1.Clear();
+            var input = CharStreams.fromString(this.syntaxRichTextBox1.Text);
+            IsisLexer lexer = new IsisLexer(input);
+            while (true)
+            {
+                var token = lexer.NextToken();
+                if (token.Type == -1) break;
+                this.textBox1.AppendText(token.Type.ToString() + "  ");
             }
         }
     }
