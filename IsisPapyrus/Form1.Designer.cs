@@ -35,9 +35,10 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.syntaxRichTextBox1 = new OsirisInterpreter.SyntaxRichTextBox();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
+            this.egyptianKeyboard1 = new EgyptianKeyboard.EgyptianKeyboard();
+            this.syntaxRichTextBox1 = new OsirisInterpreter.SyntaxRichTextBox();
             this.SuspendLayout();
             // 
             // button1
@@ -56,11 +57,11 @@
             // 
             // textBox1
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBox1.Location = new System.Drawing.Point(735, 110);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(268, 460);
+            this.textBox1.Size = new System.Drawing.Size(268, 167);
             this.textBox1.TabIndex = 1;
             // 
             // button2
@@ -83,16 +84,6 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // syntaxRichTextBox1
-            // 
-            this.syntaxRichTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.syntaxRichTextBox1.Location = new System.Drawing.Point(28, 33);
-            this.syntaxRichTextBox1.Name = "syntaxRichTextBox1";
-            this.syntaxRichTextBox1.Size = new System.Drawing.Size(673, 537);
-            this.syntaxRichTextBox1.TabIndex = 2;
-            this.syntaxRichTextBox1.Text = "";
-            this.syntaxRichTextBox1.WordWrap = false;
-            // 
             // button4
             // 
             this.button4.Location = new System.Drawing.Point(899, 62);
@@ -113,11 +104,30 @@
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
+            // egyptianKeyboard1
+            // 
+            this.egyptianKeyboard1.Location = new System.Drawing.Point(707, 299);
+            this.egyptianKeyboard1.Name = "egyptianKeyboard1";
+            this.egyptianKeyboard1.Size = new System.Drawing.Size(348, 258);
+            this.egyptianKeyboard1.TabIndex = 5;
+            this.egyptianKeyboard1.OnCharacterSend += new System.EventHandler(this.keyboardUsed);
+            // 
+            // syntaxRichTextBox1
+            // 
+            this.syntaxRichTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.syntaxRichTextBox1.Location = new System.Drawing.Point(28, 33);
+            this.syntaxRichTextBox1.Name = "syntaxRichTextBox1";
+            this.syntaxRichTextBox1.Size = new System.Drawing.Size(673, 537);
+            this.syntaxRichTextBox1.TabIndex = 2;
+            this.syntaxRichTextBox1.Text = "";
+            this.syntaxRichTextBox1.WordWrap = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1054, 605);
+            this.Controls.Add(this.egyptianKeyboard1);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button5);
@@ -143,5 +153,6 @@
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
+        private EgyptianKeyboard.EgyptianKeyboard egyptianKeyboard1;
     }
 }

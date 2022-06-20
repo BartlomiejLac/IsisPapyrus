@@ -127,6 +127,11 @@
       <Visitor>True</Visitor>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\EgyptianKeyboard\EgyptianKeyboard.csproj">
+      <Project>{BB2A49FB-DCB7-442A-8F99-DECD125DAB64}</Project>
+      <Name>EgyptianKeyboard</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,20 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Antlr4.Runtime;
+﻿using Antlr4.Runtime;
 using IsisPapyrus.InterpreterRuntime;
 using IsisPapyrus.VisitorClasses;
+using System;
+using System.Windows.Forms;
 using static IsisParser;
 
 namespace IsisPapyrus
 {
-  public partial class Form1 : Form
+    public partial class Form1 : Form
     {
         public Form1()
         {
@@ -83,6 +76,12 @@ namespace IsisPapyrus
                 if (token.Type == -1) break;
                 this.textBox1.AppendText(token.Type.ToString() + "  ");
             }
+        }
+
+        private void keyboardUsed(object sender, EventArgs e)
+        {
+            var args = e as EgyptianKeyboard.CharacterSendEventArgs;
+            this.syntaxRichTextBox1.SelectedText = args.sign;
         }
     }
 }
