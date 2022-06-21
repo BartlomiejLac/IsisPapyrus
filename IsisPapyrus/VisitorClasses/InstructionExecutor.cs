@@ -172,7 +172,7 @@ namespace IsisPapyrus.VisitorClasses
 
         public void ExecutePrintInstruction(InstructionPrintContext ctx)
         {
-            ownerProgram.console.AppendText(evaluator.EvaluateSumExpression(ctx.sumExpression()).ToString());
+            ownerProgram.console.printText(evaluator.EvaluateSumExpression(ctx.sumExpression()).ToString());
         }
 
         public void ExecuteReturnInstruction(InstructionReturnContext ctx)

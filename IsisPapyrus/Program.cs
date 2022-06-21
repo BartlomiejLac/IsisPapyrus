@@ -24,16 +24,5 @@ namespace IsisPapyrus
             System.Threading.Thread.CurrentThread.CurrentUICulture = CurrentUICulture;
         }
 
-        static void Test()
-        {
-            string n1 = "𓎈";
-            string n2 = "𓍢𓎍𓐀";
-            string n3 = "𓏼 𓂋𓏻 𓂋𓎆";
-
-            MessageBox.Show(EgyptianNumberParser.fromEgyptian(n1).ToString());
-            MessageBox.Show(EgyptianNumberParser.fromEgyptian(n2).ToString());
-            MessageBox.Show(EgyptianNumberParser.fromEgyptian(n3).ToString());
-        }
-
     }
 }

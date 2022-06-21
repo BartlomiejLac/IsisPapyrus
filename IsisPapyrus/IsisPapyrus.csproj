@@ -70,6 +70,12 @@
     <Compile Include="InterpreterRuntime\IsisProgram.cs" />
     <Compile Include="InterpreterRuntime\IsisVariable.cs" />
     <Compile Include="InterpreterRuntime\varType.cs" />
+    <Compile Include="RuntimeConsole.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RuntimeConsole.Designer.cs">
+      <DependentUpon>RuntimeConsole.cs</DependentUpon>
+    </Compile>
     <Compile Include="VisitorClasses\ExpressionEvaluator.cs" />
     <Compile Include="VisitorClasses\InstructionExecutor.cs" />
     <Compile Include="VisitorClasses\IsisVisitor.cs" />
@@ -99,6 +105,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="RuntimeConsole.resx">
+      <DependentUpon>RuntimeConsole.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

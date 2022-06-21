@@ -54,7 +54,10 @@ namespace IsisPapyrus
         private void button4_Click(object sender, EventArgs e)
         {
             this.textBox1.Clear();
-            IsisProgram prog = new IsisProgram(ref this.textBox1);
+            RuntimeConsole rc = new RuntimeConsole();
+            rc.Show();
+
+            IsisProgram prog = new IsisProgram(ref rc);
             IsisVisitor vis = new IsisVisitor(prog);
 
             var input = CharStreams.fromString(this.syntaxRichTextBox1.Text);
@@ -62,6 +65,7 @@ namespace IsisPapyrus
             CommonTokenStream tokens = new CommonTokenStream(lex);
             IsisParser parser = new IsisParser(tokens);
             ProgramContext start = parser.program();
+            
             vis.Visit(start);
         }
 

@@ -12,13 +12,13 @@ namespace IsisPapyrus.InterpreterRuntime
     {
         public Dictionary<string, IsisVariable> globalVariables;
         public Dictionary<string, DeclarationFuncContext> globalFunctions;
-        public TextBox console;
+        public RuntimeConsole console;
 
-        public IsisProgram(ref TextBox tb)
+        public IsisProgram(ref RuntimeConsole rc)
         {
             globalVariables = new Dictionary<string, IsisVariable>();
             globalFunctions = new Dictionary<string, DeclarationFuncContext>();
-            console = tb;
+            console = rc;
         }
     }
 }
