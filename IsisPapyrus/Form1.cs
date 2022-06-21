@@ -1,4 +1,5 @@
 ﻿using Antlr4.Runtime;
+using IsisPapyrus.Exceptions;
 using IsisPapyrus.InterpreterRuntime;
 using IsisPapyrus.VisitorClasses;
 using System;
@@ -59,14 +60,22 @@ namespace IsisPapyrus
 
             IsisProgram prog = new IsisProgram(ref rc);
             IsisVisitor vis = new IsisVisitor(prog);
-
-            var input = CharStreams.fromString(this.syntaxRichTextBox1.Text);
-            IsisLexer lex = new IsisLexer(input);
-            CommonTokenStream tokens = new CommonTokenStream(lex);
-            IsisParser parser = new IsisParser(tokens);
-            ProgramContext start = parser.program();
-            
-            vis.Visit(start);
+            try
+            {
+                var input = CharStreams.fromString(this.syntaxRichTextBox1.Text);
+                IsisLexer lex = new IsisLexer(input);
+                lex.RemoveErrorListeners();
+                lex.AddErrorListener(ThrowingErrorListener.Instance);
+                CommonTokenStream tokens = new CommonTokenStream(lex);
+                IsisParser parser = new IsisParser(tokens);
+                parser.RemoveErrorListeners();
+                parser.AddErrorListener(ThrowingErrorListener.Instance);
+                ProgramContext start = parser.program();
+                vis.Visit(start);
+            } catch (InterpreterException ex)
+            {
+                rc.printText(ex.Message);
+            }
         }
 
         private void button5_Click(object sender, EventArgs e)

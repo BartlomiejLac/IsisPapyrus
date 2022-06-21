@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace IsisPapyrus.Exceptions
 {
-    internal class LoopContinueException : Exception
+    internal class LoopContinueException : InterpreterException
     {
-        public LoopContinueException() : base("continue") { }
+        public LoopContinueException(int line, int charIndex) : base(line, charIndex, "Continue statement outside of loop") { }
     }
 }

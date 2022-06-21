@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace IsisPapyrus.Exceptions
 {
-    internal class FunctionReturnException : Exception
+    internal class FunctionReturnException : InterpreterException
     {
         public object? returnable;
-        public FunctionReturnException(object rt) : base("return") 
+        public FunctionReturnException(object rt, int line, int charIndex) : base(line, charIndex, "Return statement outside of function") 
         {
             returnable = rt;
         }

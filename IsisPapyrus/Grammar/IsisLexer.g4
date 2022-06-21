@@ -6,7 +6,7 @@ lexer grammar IsisLexer;
  channels {COMMENTS}
  
  LINECOMMENT : '\u{13305}' ~[\r\n]* -> channel(COMMENTS);
- STRINGCONST : DOUBLEQUOTE ANYCHARACTER* DOUBLEQUOTE;
+ STRINGCONST : DOUBLEQUOTE ~[\u{1339B}]* DOUBLEQUOTE;
 
 //keywords
 PROGRAMSTART : '\u{13080}';
@@ -68,7 +68,6 @@ MINUS : '\u{130BB}';
 ASSIGN : '\u{1335D}';
 MULTSYMBOL : '\u{13188}';
 DIVSYMBOL : '\u{133F5}';
-MODSYMBOL : '\u{132AD}';
 
 //logical operators
 GREATEREQUAL : GREATER EQUALS;
@@ -81,21 +80,11 @@ NOT : '\u{1309C}';
 GREATER : '\u{13287}';
 LESSER : '\u{13286}';
 
-fragment NUMBERCHARACTER : ZERO | UNITSYMBOL | TENSYMBOL | HUNDREDSYMBOL | THOUSANDSYMBOL | TENTHOUSANDSYMBOL | HUNDREDTHOUSANDSYMBOL | MILLIONSYMBOL | FRACTIONSYMBOL;
 IDENTIFIER
-    : VALIDLETTER (VALIDLETTER | NUMBERCHARACTER)*
+    : VALIDLETTER+
     ;
 fragment VALIDLETTER
-    : [\u{13000}-\u{13067}]
-    | [\u{13069}-\u{1308A}]
-    | [\u{1308C}-\u{130AC}]
-    | [\u{130AE}-\u{13123}]
-    | [\u{13125}-\u{1318F}]
-    | [\u{13191}-\u{131BB}]
-    | [\u{131C5}-\u{13361}]
-    | [\u{1336C}-\u{13385}]
-    | [\u{13393}-\u{133F9}]
-    | [\u{13404}-\u{1342F}]
+    : [\u{13220}-\u{1324F}]
     ;
 WHITESPACE
     :   [ \t]+
@@ -107,8 +96,5 @@ NEWLINE
         )
         -> skip
     ;
-
-fragment ANYCHARACTER : . | LETTER;
-fragment LETTER : [\u{13000}-\u{1342F}];
 
 UNRECOGNIZED : .+?;

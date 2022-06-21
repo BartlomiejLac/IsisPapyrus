@@ -1,4 +1,5 @@
-﻿using IsisPapyrus.InterpreterRuntime;
+﻿using IsisPapyrus.Exceptions;
+using IsisPapyrus.InterpreterRuntime;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,7 +39,7 @@ namespace IsisPapyrus.VisitorClasses
             {
                 return EvaluateBoolExpression(ctx.boolExpression());
             }
-            throw new Exception();
+            throw new RuntimeException(ctx.Start.Line, ctx.Start.Column, "This expression cannot be evaluated");
         }
 
         private void EvaluateDeclarationVariableExpression(ExpressionContext ctx)
@@ -49,8 +50,12 @@ namespace IsisPapyrus.VisitorClasses
             if (ctx.declarationVariable().type().STRING() != null) type = varType.IsisString;
             object value = null;
             if (ctx.ASSIGN() != null) value = EvaluateSumExpression(ctx.sumExpression());
-            if (localVariables.ContainsKey(name)) throw new Exception();
-            if (ownerProgram.globalVariables.ContainsKey(name)) throw new Exception();
+            if (localVariables.ContainsKey(name)) throw new RuntimeException(ctx.declarationVariable().variableName().Start.Line, 
+                ctx.declarationVariable().variableName().Start.Column, 
+                "Variable " + name + " already exists in this scope");
+            if (ownerProgram.globalVariables.ContainsKey(name)) throw new RuntimeException(ctx.declarationVariable().variableName().Start.Line,
+                ctx.declarationVariable().variableName().Start.Column,
+                "Variable " + name + " already exists in this scope"); 
             localVariables.Add(name, new IsisVariable(type, value));
         }
 
@@ -60,7 +65,9 @@ namespace IsisPapyrus.VisitorClasses
             IsisVariable variable;
             if (!localVariables.ContainsKey(name))
             {
-                if (!ownerProgram.globalVariables.ContainsKey(name)) throw new Exception();
+                if (!ownerProgram.globalVariables.ContainsKey(name)) throw new RuntimeException(ctx.variable().Start.Line,
+                    ctx.variable().Start.Column,
+                    "Variable " + name + " does not exist in this scope");
                 variable = ownerProgram.globalVariables[name];
             }
             else
@@ -69,42 +76,70 @@ namespace IsisPapyrus.VisitorClasses
             }
             if (ctx.ASSIGN() != null)
             {
-                variable.setValue(EvaluateSumExpression(ctx.sumExpression()));
-                return;
+                try
+                {
+                    variable.setValue(EvaluateSumExpression(ctx.sumExpression()));
+                    return;
+                } catch(VariableTypeException ex) { throw new RuntimeException(ctx.Start.Line, ctx.Start.Column, "Variable " + name + " of type " + ex.Message + " cannot be assigned with this type"); } 
             }
-            if (variable.type == varType.IsisString) throw new Exception();
+            if (variable.type == varType.IsisString) throw new RuntimeException(ctx.Start.Line, ctx.Start.Column, "This operation cannot be applied to string");
             if (ctx.INCREMENT() != null)
             {
-                variable.setValue((Number)variable.value + new Number(1, 0, 1));
-                return;
+                try
+                {
+                    variable.setValue((Number)variable.value + new Number(1, 0, 1));
+                    return;
+                }
+                catch (VariableTypeException ex) { throw new RuntimeException(ctx.Start.Line, ctx.Start.Column, "Variable " + name + " of type " + ex.Message + " cannot be assigned with this type"); }
+
             }
             if (ctx.DECREMENT() != null)
             {
-                variable.setValue((Number)variable.value - new Number(1, 0, 1));
-                return;
+                try
+                {
+                    variable.setValue((Number)variable.value - new Number(1, 0, 1));
+                    return;
+                }
+                catch (VariableTypeException ex) { throw new RuntimeException(ctx.Start.Line, ctx.Start.Column, "Variable " + name + " of type " + ex.Message + " cannot be assigned with this type"); }
             }
             var r = EvaluateSumExpression(ctx.sumExpression());
-            if (!(r is Number)) throw new Exception();
+            if (!(r is Number)) throw new RuntimeException(ctx.Start.Line, ctx.Start.Column, "This operation cannot be applied to string");
             Number result = r as Number;
             if (ctx.INCREMENTBY() != null)
             {
-                variable.setValue((Number)variable.value + result);
-                return;
+                try
+                {
+                    variable.setValue((Number)variable.value + result);
+                    return;
+                }
+                catch (VariableTypeException ex) { throw new RuntimeException(ctx.Start.Line, ctx.Start.Column, "Variable " + name + " of type " + ex.Message + " cannot be assigned with this type"); }
             }
             if (ctx.DECREMENTBY() != null)
             {
-                variable.setValue((Number)variable.value - result);
-                return;
+                try
+                {
+                    variable.setValue((Number)variable.value - result);
+                    return;
+                }
+                catch (VariableTypeException ex) { throw new RuntimeException(ctx.Start.Line, ctx.Start.Column, "Variable " + name + " of type " + ex.Message + " cannot be assigned with this type"); }
             }
             if (ctx.MULTIPLYBY() != null)
             {
-                variable.setValue((Number)variable.value * result);
-                return;
+                try
+                {
+                    variable.setValue((Number)variable.value * result);
+                    return;
+                }
+                catch (VariableTypeException ex) { throw new RuntimeException(ctx.Start.Line, ctx.Start.Column, "Variable " + name + " of type " + ex.Message + " cannot be assigned with this type"); }
             }
             if (ctx.DIVIDEBY() != null)
             {
-                variable.setValue((Number)variable.value / result);
-                return;
+                try
+                {
+                    variable.setValue((Number)variable.value / result);
+                    return;
+                }
+                catch (VariableTypeException ex) { throw new RuntimeException(ctx.Start.Line, ctx.Start.Column, "Variable " + name + " of type " + ex.Message + " cannot be assigned with this type"); }
             }
         }
 
@@ -121,7 +156,7 @@ namespace IsisPapyrus.VisitorClasses
                 if (ctx.sumOperator().PLUS() != null) return (Number)A + (Number)B;
                 return (Number)A - (Number)B;
             }
-            if (ctx.sumOperator().MINUS() != null) throw new Exception();
+            if (ctx.sumOperator().MINUS() != null) throw new RuntimeException(ctx.Start.Line, ctx.Start.Column, "This operation cannot be applied to string");
             if (A is string && B is string)
             {
                 return (string)A + (string)B;
@@ -136,7 +171,7 @@ namespace IsisPapyrus.VisitorClasses
                 Number numA = A as Number;
                 return numA.ToString() + (string)B;
             }
-            throw new Exception();
+            throw new RuntimeException(ctx.Start.Line, ctx.Start.Column, "This expression cannot be evaluated");
         }
 
         public object EvaluateMultExpression(MultExpressionContext ctx)
@@ -149,14 +184,14 @@ namespace IsisPapyrus.VisitorClasses
                 if (ctx.multOperator().MULTSYMBOL() != null) return (Number)A * (Number)B;
                 return (Number)A / (Number)B;
             }
-            throw new Exception();
+            throw new RuntimeException(ctx.Start.Line, ctx.Start.Column, "This operation cannot be applied to string");
         }
 
         public object EvaluateUnaryExpression(UnaryExpressionContext ctx)
         {
             if (ctx.unaryExpression() == null) return EvaluateFactor(ctx.factor());
             var A = EvaluateUnaryExpression(ctx.unaryExpression());
-            if (!(A is Number)) throw new Exception();
+            if (!(A is Number)) throw new RuntimeException(ctx.Start.Line, ctx.Start.Column, "This operation cannot be applied to string");
             var numA = A as Number;
             if (ctx.unaryOperator().PLUS() != null) return numA;
             else return -numA;
@@ -170,13 +205,14 @@ namespace IsisPapyrus.VisitorClasses
                 IsisVariable variable;
                 if (!localVariables.ContainsKey(name))
                 {
-                    if (!ownerProgram.globalVariables.ContainsKey(name)) throw new Exception();
+                    if (!ownerProgram.globalVariables.ContainsKey(name)) throw new RuntimeException(ctx.Start.Line, ctx.Start.Column, "Variable " + name + " does not exist in this scope");
                     variable = ownerProgram.globalVariables[name];
                 }
                 else
                 {
                     variable = localVariables[name];
                 }
+                if (variable.value == null) throw new RuntimeException(ctx.Start.Line, ctx.Start.Column, "Variable " + name + " was declared but not assigned");
                 return variable.value;
             }
             if (ctx.constant() != null)
@@ -191,7 +227,7 @@ namespace IsisPapyrus.VisitorClasses
                     Number num = EgyptianNumberParser.fromEgyptian(ctx.constant().NUMBERCONST().GetText());
                     return num;
                 }
-                throw new Exception();
+                throw new RuntimeException(ctx.Start.Line, ctx.Start.Column, "Unrecognized constant");
             }
             if (ctx.sumExpression() != null)
             {
@@ -201,7 +237,7 @@ namespace IsisPapyrus.VisitorClasses
             {
                 return EvaluateFunctionCall(ctx.functionCall());
             }
-            throw new Exception();
+            throw new RuntimeException(ctx.Start.Line, ctx.Start.Column, "This expression cannot be evaluated");
         }
 
         public object EvaluateFunctionCall(FunctionCallContext ctx)
@@ -253,7 +289,7 @@ namespace IsisPapyrus.VisitorClasses
                 if (ctx.compareOperator().EQUALS() != null) return A == B;
                 if (ctx.compareOperator().NOTEQUALS() != null) return A != B;
             }
-            throw new Exception();
+            throw new RuntimeException(ctx.Start.Line, ctx.Start.Column, "This operation cannot be applied to string");
         }
     }
 }

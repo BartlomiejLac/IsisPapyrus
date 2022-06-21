@@ -27,6 +27,12 @@ namespace EgyptianKeyboard
             {
                 this.betterListView3.Items.Add(new ListViewItem(st, 0));
             }
+            foreach(var st in CharSource.variableNames)
+            {
+                this.betterListView4.Items.Add(new ListViewItem(st, 0));
+            }
+            this.betterListView3.increaseFont(4);
+            this.betterListView4.increaseFont(8);
         }
 
         private void filterKeywords(object sender, EventArgs e)

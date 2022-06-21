@@ -19,11 +19,11 @@ namespace IsisPapyrus
             if (type <= 17) return Color.MediumVioletRed;
             if (type == 18) return Color.DarkTurquoise;
             if (type == 19) return Color.CornflowerBlue;
-            if (type <= 41) return Color.Black;
-            if (type <= 44) return Color.CornflowerBlue;
-            if (type <= 46) return Color.Black;
-            if (type == 47) return Color.LightGreen;
-            if (type == 50) return Color.Red;
+            if (type <= 40) return Color.Black;
+            if (type <= 43) return Color.CornflowerBlue;
+            if (type <= 45) return Color.Black;
+            if (type == 46) return Color.LightGreen;
+            if (type == 49) return Color.Red;
             return Color.Black;
         }
 

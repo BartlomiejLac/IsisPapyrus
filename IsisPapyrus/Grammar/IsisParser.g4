@@ -53,12 +53,12 @@ compareOperator : EQUALS | NOTEQUALS | GREATER | GREATEREQUAL | LESSER | LESSERE
 sumExpression : sumExpression sumOperator multExpression | multExpression;
 sumOperator : PLUS | MINUS;
 multExpression : multExpression multOperator unaryExpression | unaryExpression;
-multOperator : MULTSYMBOL | DIVSYMBOL | MODSYMBOL;
+multOperator : MULTSYMBOL | DIVSYMBOL;
 unaryExpression : unaryOperator unaryExpression | factor;
 unaryOperator : PLUS | MINUS;
 factor : variable | constant | functionCall | LEFTPAREN sumExpression RIGHTPAREN;
 functionCall : IDENTIFIER LEFTPAREN sumExpressions RIGHTPAREN;
 sumExpressions : sumExpressionsList | /* eps */;
-sumExpressionsList : sumExpression sumExpressionsList | sumExpression;
+sumExpressionsList : sumExpression COMMA sumExpressionsList | sumExpression;
 variable : IDENTIFIER;
 constant : STRINGCONST | NUMBERCONST;

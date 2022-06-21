@@ -59,8 +59,13 @@
   <ItemGroup>
     <Compile Include="ColorMap.cs" />
     <Compile Include="Exceptions\FunctionReturnException.cs" />
+    <Compile Include="Exceptions\InterpreterException.cs" />
     <Compile Include="Exceptions\LoopBreakException.cs" />
     <Compile Include="Exceptions\LoopContinueException.cs" />
+    <Compile Include="Exceptions\ParseException.cs" />
+    <Compile Include="Exceptions\ThrowingErrorListener.cs" />
+    <Compile Include="Exceptions\RuntimeException.cs" />
+    <Compile Include="Exceptions\VariableTypeException.cs" />
     <Compile Include="GrammarClasses\IsisLexer.cs" />
     <Compile Include="GrammarClasses\IsisParser.cs" />
     <Compile Include="GrammarClasses\IsisParserBaseListener.cs" />

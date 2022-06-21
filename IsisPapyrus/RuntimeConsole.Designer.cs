@@ -28,22 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
-            // textBox1
+            // richTextBox1
             // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.MenuText;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBox1.ForeColor = System.Drawing.SystemColors.Window;
-            this.textBox1.Location = new System.Drawing.Point(0, 0);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox1.Size = new System.Drawing.Size(560, 320);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.enterPressed);
+            this.richTextBox1.BackColor = System.Drawing.SystemColors.WindowText;
+            this.richTextBox1.ForeColor = System.Drawing.SystemColors.Window;
+            this.richTextBox1.Location = new System.Drawing.Point(0, 0);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
+            this.richTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.richTextBox1.Size = new System.Drawing.Size(560, 320);
+            this.richTextBox1.TabIndex = 1;
+            this.richTextBox1.Text = "";
             // 
             // RuntimeConsole
             // 
@@ -51,18 +49,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(560, 320);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.richTextBox1);
             this.Name = "RuntimeConsole";
             this.Text = "RuntimeConsole";
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.enterPressed);
             this.Resize += new System.EventHandler(this.resized);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from C:/Users/bartt/RiderProjects/IsisPapyrus/IsisPapyrus/Grammar\IsisParser.g4 by ANTLR 4.10.1
+// Generated from C:/Users/bartt/source/repos/BartlomiejLac/IsisPapyrus/IsisPapyrus/Grammar\IsisParser.g4 by ANTLR 4.10.1
 
 // Unreachable code detected
 #pragma warning disable 0162

@@ -12,7 +12,7 @@ namespace EgyptianKeyboard
         {
             new string [2] { "𓂀", "start" },
             new string [2] { "𓅊", "end" },
-            new string [2] { "𓋹", "instructionend" },
+            new string [2] { "𓋹", "ankh" },
             new string [2] { "𓃕", "numeric" },
             new string [2] { "𓃯", "string" },
             new string [2] { "𓅯", "void" },
@@ -28,6 +28,7 @@ namespace EgyptianKeyboard
             new string [2] { "𓂽", "plus" },
             new string [2] { "𓂻", "minus" },
             new string [2] { "𓆈", "multiply" },
+            new string [2] { "𓏵", "divide" },
             new string [2] { "𓊇", "greater" },
             new string [2] { "𓊆", "lesser" },
             new string [2] { "𓎙", "notequals" },
@@ -56,5 +57,10 @@ namespace EgyptianKeyboard
         };
 
         public static string[] otherNumberSigns = new string[5] { "𓂋", "𓄤", "𓂭", "𓆐", "𓁨" };
+
+        public static string[] variableNames = new string[48] { "𓈠", "𓈡", "𓈢", "𓈣", "𓈤", "𓈥", "𓈦", "𓈧", "𓈨", "𓈩", "𓈪",
+                                                                "𓈫", "𓈬", "𓈭", "𓈮", "𓈯", "𓈰", "𓈱", "𓈲", "𓈳", "𓈴", "𓈵", "𓈶",
+                                                                "𓈷", "𓈸", "𓈹", "𓈺", "𓈻", "𓈼", "𓈽", "𓈾", "𓈿", "𓉀", "𓉁", "𓉂",
+                                                                "𓉃", "𓉄", "𓉅", "𓉆", "𓉇", "𓉈", "𓉉", "𓉊", "𓉋", "𓉌", "𓉍", "𓉎", "𓉏" };
 }
 }

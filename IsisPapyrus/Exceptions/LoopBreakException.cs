@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace IsisPapyrus.Exceptions
 {
-    internal class LoopBreakException : Exception
+    internal class LoopBreakException : InterpreterException
     {
-        public LoopBreakException() : base("break") { }
+        public LoopBreakException(int line, int charIndex) : base(line, charIndex, "Break statement outside of loop") { }
     }
 }

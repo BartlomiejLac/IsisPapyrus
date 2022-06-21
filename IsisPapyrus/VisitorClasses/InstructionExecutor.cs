@@ -30,11 +30,11 @@ namespace IsisPapyrus.VisitorClasses
             }
             if (ctx.instructionBreak() != null)
             {
-                throw new LoopBreakException();
+                throw new LoopBreakException(ctx.Start.Line, ctx.Start.Column);
             }
             if (ctx.instructionContinue() != null)
             {
-                throw new LoopContinueException();
+                throw new LoopContinueException(ctx.Start.Line, ctx.Start.Column);
             }
             if (ctx.instructionIf() != null)
             {
@@ -177,8 +177,8 @@ namespace IsisPapyrus.VisitorClasses
 
         public void ExecuteReturnInstruction(InstructionReturnContext ctx)
         {
-            if (ctx.sumExpression() == null) throw new FunctionReturnException(null);
-            throw new FunctionReturnException(evaluator.EvaluateSumExpression(ctx.sumExpression()));
+            if (ctx.sumExpression() == null) throw new FunctionReturnException(null, ctx.Start.Line, ctx.Start.Column);
+            throw new FunctionReturnException(evaluator.EvaluateSumExpression(ctx.sumExpression()), ctx.Start.Line, ctx.Start.Column);
         }
     }
 }

@@ -17,6 +17,16 @@ namespace BetterListView
             this.View = View.Tile;
             this.Activation = ItemActivation.Standard;
         }
+
+        public void increaseFont(int size)
+        {
+            this.Font = new Font(this.Font.FontFamily,
+                this.Font.Size + size,
+                FontStyle.Bold,
+                this.Font.Unit,
+                this.Font.GdiCharSet,
+                this.Font.GdiVerticalFont);
+        }
         protected override void OnDrawItem(DrawListViewItemEventArgs e)
         {
             Color textColor = SystemColors.WindowText;
