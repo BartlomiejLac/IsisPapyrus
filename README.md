@@ -43,6 +43,7 @@ Zostanie wyświetlone okno:
 ![plot](./Images/prog_1.jpg)
 
 W tym momencie na ekranie możemy zacząć pisać program w hieroglifach, pomocnym do tego jest specjalna klawiatura:
+
 ![plot](./Images/keyboard_1.jpg)
 
 Klawiatura jest podzielona na sekcje: **Keywords**, **Numbers** oraz **Other**. Pierwsza zawiera wszystkie słowa kluczowe potrzebne do zbudowania programu, druga system liczbowy, a trzecia inne hieroglify nieużywane jako słowa kluczowe, należy je użyć jako nazwy zmiennych. By wybrać z klawiatury hieroglif należy go wcisnąć kursorem dwukrotnie.
