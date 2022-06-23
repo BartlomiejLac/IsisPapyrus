@@ -13,8 +13,12 @@
 - implementacja interpretera w **C#** używając frameworku **WinForms** z platformy **.NET**
 - używany generator parserów: **ANTLR** w wersji **4.10.1**
 
+[1]: https://pl.wikipedia.org/wiki/Egipski_system_liczbowy "Egipski system liczbowy"
+
 **Gramatyka**
 
 Pliki gramatyk znajdują się w katalogu /IsisPapyrus/Grammar
 
 **Schemat struktury programu**
+
+![plot](./Images/prog_struct.png)
