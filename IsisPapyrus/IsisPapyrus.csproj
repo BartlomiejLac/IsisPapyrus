@@ -82,6 +82,7 @@
       <DependentUpon>RuntimeConsole.cs</DependentUpon>
     </Compile>
     <Compile Include="VisitorClasses\ExpressionEvaluator.cs" />
+    <Compile Include="VisitorClasses\FunctionExecutor.cs" />
     <Compile Include="VisitorClasses\InstructionExecutor.cs" />
     <Compile Include="VisitorClasses\IsisVisitor.cs" />
     <Compile Include="NumberClasses\EgyptianNumberParser.cs" />

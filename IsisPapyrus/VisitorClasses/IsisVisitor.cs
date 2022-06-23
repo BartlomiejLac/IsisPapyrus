@@ -65,6 +65,10 @@ namespace IsisPapyrus.VisitorClasses
             var type = context.type();
             var name = context.variableName().IDENTIFIER().GetText();
 
+            if (this.program.globalVariables.ContainsKey(name)) throw new RuntimeException(context.variableName().Start.Line,
+                context.variableName().Start.Column,
+                "Variable " + name + " already exists in this scope");
+
             if (type.NUMERIC() != null) this.program.globalVariables.Add(name,
                     new IsisVariable(varType.IsisNumber, null));
             if (type.STRING() != null) this.program.globalVariables.Add(name,
@@ -74,9 +78,13 @@ namespace IsisPapyrus.VisitorClasses
 
         public override int VisitDeclarationFunc([NotNull] IsisParser.DeclarationFuncContext context)
         {
+            var name = context.IDENTIFIER().GetText();
 
-            throw new NotImplementedException();
-            
+            if (this.program.globalFunctions.ContainsKey(name)) throw new RuntimeException(context.IDENTIFIER().Symbol.Line,
+                context.IDENTIFIER().Symbol.Column,
+                "Function " + name + " already exists in this scope");
+            this.program.globalFunctions.Add(name, context);
+            return 0;
         }
 
         public override int VisitMainFunction([NotNull] IsisParser.MainFunctionContext context)

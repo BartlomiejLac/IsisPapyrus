@@ -242,8 +242,20 @@ namespace IsisPapyrus.VisitorClasses
 
         public object EvaluateFunctionCall(FunctionCallContext ctx)
         {
-            //TODO
-            throw new NotImplementedException();
+            var name = ctx.IDENTIFIER().GetText();
+            if (!ownerProgram.globalFunctions.ContainsKey(name)) throw new RuntimeException(ctx.Start.Line, ctx.Start.Column,
+                "Function " + name + " was not declared");
+            var func = ownerProgram.globalFunctions[name];
+            var arguments = new List<SumExpressionContext>();
+            var sctx = ctx.sumExpressions().sumExpressionsList();
+            while (sctx != null)
+            {
+                var sumEx = sctx.sumExpression();
+                if (sumEx != null) arguments.Add(sumEx);
+                sctx = sctx.sumExpressionsList();
+            }
+            var functionExecutor = new FunctionExecutor(ref ownerProgram);
+            return functionExecutor.ExecuteFunction(func, arguments);
         }
 
         public bool EvaluateBoolExpression(BoolExpressionContext ctx)

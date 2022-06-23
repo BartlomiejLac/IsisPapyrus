@@ -84,7 +84,11 @@ IDENTIFIER
     : VALIDLETTER+
     ;
 fragment VALIDLETTER
-    : [\u{13220}-\u{1324F}]
+    : [\u{130D2}-\u{130D4}]
+    | [\u{130D6}-\u{130EE}]
+    | [\u{130F0}-\u{13107}]
+    | [\u{1313F}-\u{13149}]
+    | [\u{1314B}-\u{13157}]
     ;
 WHITESPACE
     :   [ \t]+
