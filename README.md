@@ -90,5 +90,5 @@ Program w przyszłości może zostać rozszerzony o:
 
 **Ograniczenia programu**
 
-- Ze względu wykorzystania .NET Framework dla Windows Forms program może być uruchamiany jedynie na urządzeniach z system Microsoft Windows
+- Ze względu wykorzystania .NET Framework dla Windows Forms program może być uruchamiany jedynie na urządzeniach z systemem Microsoft Windows
 - Obsługiwany jest tylko jeden plik jednocześnie
