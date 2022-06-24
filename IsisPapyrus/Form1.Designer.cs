@@ -43,6 +43,7 @@
             // 
             // button1
             // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.Location = new System.Drawing.Point(735, 17);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(97, 23);
@@ -57,6 +58,7 @@
             // 
             // textBox1
             // 
+            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBox1.Location = new System.Drawing.Point(735, 110);
             this.textBox1.Multiline = true;
@@ -66,6 +68,7 @@
             // 
             // button2
             // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button2.Location = new System.Drawing.Point(735, 46);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(97, 23);
@@ -76,6 +79,7 @@
             // 
             // button3
             // 
+            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button3.Location = new System.Drawing.Point(899, 33);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(104, 23);
@@ -86,6 +90,7 @@
             // 
             // button4
             // 
+            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button4.Location = new System.Drawing.Point(899, 62);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(104, 23);
@@ -96,6 +101,7 @@
             // 
             // button5
             // 
+            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button5.Location = new System.Drawing.Point(735, 75);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(97, 23);
@@ -106,6 +112,7 @@
             // 
             // egyptianKeyboard1
             // 
+            this.egyptianKeyboard1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.egyptianKeyboard1.Location = new System.Drawing.Point(707, 299);
             this.egyptianKeyboard1.Name = "egyptianKeyboard1";
             this.egyptianKeyboard1.Size = new System.Drawing.Size(348, 258);
@@ -114,10 +121,11 @@
             // 
             // syntaxRichTextBox1
             // 
+            this.syntaxRichTextBox1.Dock = System.Windows.Forms.DockStyle.Left;
             this.syntaxRichTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.syntaxRichTextBox1.Location = new System.Drawing.Point(28, 33);
+            this.syntaxRichTextBox1.Location = new System.Drawing.Point(0, 0);
             this.syntaxRichTextBox1.Name = "syntaxRichTextBox1";
-            this.syntaxRichTextBox1.Size = new System.Drawing.Size(673, 537);
+            this.syntaxRichTextBox1.Size = new System.Drawing.Size(673, 605);
             this.syntaxRichTextBox1.TabIndex = 2;
             this.syntaxRichTextBox1.Text = "";
             this.syntaxRichTextBox1.WordWrap = false;
