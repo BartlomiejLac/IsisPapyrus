@@ -43,7 +43,7 @@ namespace IsisPapyrus
         // translacja inta na ciąg znaków egipskich
         public static String IntToEgyptian(int a)
         {
-            // jeżeli poprzez działania wyjdzie część całkowita za duża to jesteśmy w dupie, ale ułamki mają przed tym zabezpieczenie (patrz: funkcja DecomposeFraction w Number, linia 86)
+            // jeżeli poprzez działania wyjdzie część całkowita za duża to jest źle, ale ułamki mają przed tym zabezpieczenie (patrz: funkcja DecomposeFraction w Number, linia 86)
             if (a > 9999999)
             {
                 throw new ArgumentException("Egyptian numbers don't go that high :(", nameof(a));
